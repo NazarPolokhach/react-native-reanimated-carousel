@@ -1,4 +1,4 @@
-import 'react-native-reanimated'
+import 'react-native-reanimated';
 export type { TCarouselProps, ICarouselInstance } from './types';
 import Carousel from './Carousel';
 

@@ -30,6 +30,7 @@ interface Props {
     onScrollBegin?: () => void;
     onScrollEnd?: () => void;
     onTouchBegin?: () => void;
+    onRefresh?: () => void;
     onTouchEnd?: () => void;
     style?: StyleProp<ViewStyle>;
     translation: Animated.SharedValue<number>;
@@ -213,15 +214,9 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                 onScrollBegin && runOnJS(onScrollBegin)();
                 ctx.max = (maxPage - 1) * size;
                 ctx.panOffset = translation.value;
-
-                if (_.translationY > 50) {
-                    onRefresh && onRefresh();
-                }
-                console.log('=0=-=- onStart', y: _.translationY )
+                if (_?.translationY > 50) onRefresh?.();
             },
             onActive: (e, ctx) => {
-                console.log('=0=-=- onActive', y: e.translationY)
-
                 if (ctx.validStart) {
                     ctx.validStart = false;
                     cancelAnimation(translation);
@@ -246,7 +241,6 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                 translation.value = ctx.panOffset + panTranslation;
             },
             onEnd: (e) => {
-                console.log('=0=-=- onEnd', e)
                 const { velocityX, velocityY, translationX, translationY } = e;
                 scrollEndVelocity.value = isHorizontal.value
                     ? velocityX
