@@ -272,7 +272,6 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
 
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
-        wait(2000).then(() => setRefreshing(false));
       }, []);
 
     return (
