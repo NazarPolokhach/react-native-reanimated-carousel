@@ -274,10 +274,6 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
         return vertical ? styles.contentHorizontal : styles.contentVertical;
     }, [vertical]);
 
-    const onRefresh = React.useCallback(() => {
-        setRefreshing(true);
-      }, []);
-
     return (
         <Animated.View
             style={[
