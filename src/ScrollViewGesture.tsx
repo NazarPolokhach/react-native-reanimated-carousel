@@ -213,8 +213,11 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                 onScrollBegin && runOnJS(onScrollBegin)();
                 ctx.max = (maxPage - 1) * size;
                 ctx.panOffset = translation.value;
+                console.log('=0=-=- onStart', _, ctx)
             },
             onActive: (e, ctx) => {
+                console.log('=0=-=- onActive', e, ctx)
+
                 if (ctx.validStart) {
                     ctx.validStart = false;
                     cancelAnimation(translation);
@@ -239,6 +242,7 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                 translation.value = ctx.panOffset + panTranslation;
             },
             onEnd: (e) => {
+                console.log('=0=-=- onActive', e)
                 const { velocityX, velocityY, translationX, translationY } = e;
                 scrollEndVelocity.value = isHorizontal.value
                     ? velocityX
@@ -284,11 +288,6 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
             onTouchStart={onTouchBegin}
             onTouchEnd={onTouchEnd}
         >
-            <View style={{ width: 100, height: 100, backgroundColor: "red"}}></View>
-                <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-          />
             <PanGestureHandler
                 {...panGestureHandlerProps}
                 enabled={enabled}
