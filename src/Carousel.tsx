@@ -50,6 +50,7 @@ const Carousel = React.forwardRef<ICarouselInstance, TCarouselProps<any>>(
             onProgressChange,
             customAnimation,
             defaultIndex,
+            refreshing,
         } = props;
 
         const commonVariables = useCommonVariables(props);
@@ -224,6 +225,7 @@ const Carousel = React.forwardRef<ICarouselInstance, TCarouselProps<any>>(
                     <ScrollViewGesture
                         size={size}
                         translation={handlerOffsetX}
+                        refreshing={refreshing}
                         onScrollBegin={scrollViewGestureOnScrollBegin}
                         onRefresh={scrollViewGestureOnRefresh}
                         onScrollEnd={scrollViewGestureOnScrollEnd}

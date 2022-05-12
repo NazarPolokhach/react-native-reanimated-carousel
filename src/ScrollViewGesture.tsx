@@ -27,6 +27,7 @@ type GestureContext = {
 interface Props {
     size: number;
     infinite?: boolean;
+    refreshing?: boolean;
     onScrollBegin?: () => void;
     onScrollEnd?: () => void;
     onTouchBegin?: () => void;
@@ -59,6 +60,7 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
         onTouchBegin,
         onTouchEnd,
         onRefresh,
+        refreshing
     } = props;
 
     const maxPage = data.length;
@@ -220,10 +222,11 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                     ctx.validStart = false;
                     cancelAnimation(translation);
                 }
-                console.log('-=-= onActive', e?.translationY)
-                if (e?.translationY > 50) {
+                console.log('-=-= onActive', e?.translationY, refreshing)
+                if (e?.translationY > 50 && !refreshing) {
                     console.log('-=-= before onRefresh', e?.translationY)
                     onRefresh?.()
+                    cancelAnimation(translation);
                 }
 
                 touching.value = true;

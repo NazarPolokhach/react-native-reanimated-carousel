@@ -124,6 +124,11 @@ export type TCarouselProps<T = any> = {
      */
     pagingEnabled?: boolean;
     /**
+     * When true can't refresh again
+     * @default false
+     */
+    refreshing?: boolean;
+    /**
      * If enabled, releasing the touch will scroll to the nearest item.
      * valid when pagingEnabled=false
      * @deprecated please use snapEnabled instead
