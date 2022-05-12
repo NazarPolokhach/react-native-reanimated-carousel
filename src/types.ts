@@ -169,6 +169,11 @@ export type TCarouselProps<T = any> = {
      * On scroll begin
      */
     onScrollBegin?: () => void;
+    
+    /**
+     * On scroll begin
+     */
+    onRefresh?: () => void;
     /**
      * On scroll end
      */

@@ -57,6 +57,7 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
         onScrollEnd,
         onTouchBegin,
         onTouchEnd,
+        onRefresh,
     } = props;
 
     const maxPage = data.length;
@@ -212,11 +213,13 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                 onScrollBegin && runOnJS(onScrollBegin)();
                 ctx.max = (maxPage - 1) * size;
                 ctx.panOffset = translation.value;
-                console.log('=0=-=- onStart', { absoluteY: _.absoluteY, translationY: _.translationY, y: _.translationY })
+
+                if (_.translationY > 50) 
+                    onRefresh && runOnJS(onRefresh)();
+                console.log('=0=-=- onStart', y: _.translationY )
             },
             onActive: (e, ctx) => {
-                console.log('=0=-=- onActive', { absoluteY: e.absoluteY, translationY: e.translationY, y: e.translationY })
-
+                console.log('=0=-=- onActive', y: e.translationY)
 
                 if (ctx.validStart) {
                     ctx.validStart = false;
