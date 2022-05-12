@@ -215,7 +215,8 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                 console.log('=0=-=- onStart', { absoluteY: _.absoluteY, translationY: _.translationY, y: _.translationY })
             },
             onActive: (e, ctx) => {
-                console.log('=0=-=- onActive', e)
+                console.log('=0=-=- onActive', { absoluteY: e.absoluteY, translationY: e.translationY, y: e.translationY })
+
 
                 if (ctx.validStart) {
                     ctx.validStart = false;
