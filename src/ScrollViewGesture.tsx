@@ -215,7 +215,7 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                 ctx.panOffset = translation.value;
 
                 if (_.translationY > 50) {
-                    onRefresh && runOnJS(onRefresh)();
+                    onRefresh && onRefresh();
                 }
                 console.log('=0=-=- onStart', y: _.translationY )
             },
