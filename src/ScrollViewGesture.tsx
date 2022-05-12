@@ -28,12 +28,12 @@ interface Props {
     size: number;
     infinite?: boolean;
     refreshing?: boolean;
+    allowRefreshing?: boolean;
     onScrollBegin?: () => void;
     onScrollEnd?: () => void;
     onTouchBegin?: () => void;
     onRefresh?: () => void;
     onTouchEnd?: () => void;
-    getCurrentIndex?: () => void;
     style?: StyleProp<ViewStyle>;
     translation: Animated.SharedValue<number>;
 }
@@ -62,7 +62,7 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
         onTouchEnd,
         onRefresh,
         refreshing,
-        getCurrentIndex
+        allowRefreshing
     } = props;
 
     const maxPage = data.length;
@@ -225,13 +225,9 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                     cancelAnimation(translation);
                 }
 
-                if (e?.translationY > 50 && !refreshing) {
-                    const index: number = getCurrentIndex?.() || -1
-                    console.log('-=-=- getCurrentIndex', index)
-                    if (index === 0) {
-                        onRefresh?.()
-                        cancelAnimation(translation);
-                    }
+                if (e?.translationY > 50 && !refreshing && allowRefreshing) {
+                    onRefresh?.()
+                    cancelAnimation(translation);
                 }
 
                 touching.value = true;

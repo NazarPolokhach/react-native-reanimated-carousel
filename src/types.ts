@@ -127,6 +127,11 @@ export type TCarouselProps<T = any> = {
      * When true can't refresh again
      * @default false
      */
+    allowRefreshing?: boolean;
+    /**
+     * When true can't refresh again
+     * @default false
+     */
     refreshing?: boolean;
     /**
      * If enabled, releasing the touch will scroll to the nearest item.
