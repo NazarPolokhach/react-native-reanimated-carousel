@@ -227,6 +227,7 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
 
                 if (e?.translationY > 50 && !refreshing) {
                     const index: number = getCurrentIndex?.() || -1
+                    console.log('-=-=- getCurrentIndex', index)
                     if (index === 0) {
                         onRefresh?.()
                         cancelAnimation(translation);
