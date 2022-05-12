@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, ViewStyle, View, RefreshControl } from 'react-native';
 import {
     PanGestureHandler,
     PanGestureHandlerGestureEvent,
@@ -64,6 +64,7 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
     const touching = useSharedValue(false);
     const scrollEndTranslation = useSharedValue(0);
     const scrollEndVelocity = useSharedValue(0);
+    const [refreshing, setRefreshing] = React.useState(false);
 
     const _withSpring = React.useCallback(
         (toValue: number, onFinished?: () => void) => {
@@ -269,6 +270,11 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
         return vertical ? styles.contentHorizontal : styles.contentVertical;
     }, [vertical]);
 
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        wait(2000).then(() => setRefreshing(false));
+      }, []);
+
     return (
         <Animated.View
             style={[
@@ -279,6 +285,11 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
             onTouchStart={onTouchBegin}
             onTouchEnd={onTouchEnd}
         >
+            <View style={{ width: 100, height: 100, backgroundColor: "red"}}></View>
+                <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
             <PanGestureHandler
                 {...panGestureHandlerProps}
                 enabled={enabled}
