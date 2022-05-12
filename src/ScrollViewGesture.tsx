@@ -241,7 +241,7 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                 translation.value = ctx.panOffset + panTranslation;
             },
             onEnd: (e) => {
-                console.log('=0=-=- onActive', e)
+                console.log('=0=-=- onEnd', e)
                 const { velocityX, velocityY, translationX, translationY } = e;
                 scrollEndVelocity.value = isHorizontal.value
                     ? velocityX
