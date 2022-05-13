@@ -60,9 +60,9 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
         onScrollEnd,
         onTouchBegin,
         onTouchEnd,
-        // onRefresh,
-        // refreshing,
-        // allowRefreshing
+        onRefresh,
+        refreshing,
+        allowRefreshing
     } = props;
 
     const maxPage = data.length;
@@ -226,11 +226,10 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                 }
                 
                 // console.log('-=-= onActive', e?.translationY > 50, refreshing, allowRefreshing)
-                // if (e?.translationY > 50 && !refreshing && allowRefreshing) {
-
-                //     onRefresh?.()
-                //     cancelAnimation(translation);
-                // }
+                if (e?.translationY > 50 && !refreshing && allowRefreshing) {
+                    onRefresh?.()
+                    // cancelAnimation(translation);
+                }
 
                 touching.value = true;
                 const { translationX, translationY } = e;
