@@ -60,9 +60,9 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
         onScrollEnd,
         onTouchBegin,
         onTouchEnd,
-        onRefresh,
-        refreshing,
-        allowRefreshing
+        // onRefresh,
+        // refreshing,
+        // allowRefreshing
     } = props;
 
     const maxPage = data.length;
