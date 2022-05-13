@@ -225,12 +225,12 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                     cancelAnimation(translation);
                 }
                 
-                console.log('-=-= onActive', e?.translationY > 50, refreshing, allowRefreshing)
-                if (e?.translationY > 50 && !refreshing && allowRefreshing) {
+                // console.log('-=-= onActive', e?.translationY > 50, refreshing, allowRefreshing)
+                // if (e?.translationY > 50 && !refreshing && allowRefreshing) {
 
-                    onRefresh?.()
-                    cancelAnimation(translation);
-                }
+                //     onRefresh?.()
+                //     cancelAnimation(translation);
+                // }
 
                 touching.value = true;
                 const { translationX, translationY } = e;
