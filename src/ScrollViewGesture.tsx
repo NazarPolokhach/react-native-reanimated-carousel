@@ -225,10 +225,8 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                     cancelAnimation(translation);
                 }
                 
-                console.log('-=-= onActive', e)
                 if (e?.translationY > 50 && !refreshing && allowRefreshing) {
                     onRefresh?.()
-                    // cancelAnimation(translation);
                 }
 
                 touching.value = true;
