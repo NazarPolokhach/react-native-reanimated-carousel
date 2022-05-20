@@ -38,6 +38,9 @@ export function useInitProps<T>(
         snapEnabled = props.enableSnap ?? true,
         width: _width,
         height: _height,
+        onRefresh = () => {},
+        refreshing = false,
+        allowRefreshing = false
     } = props;
 
     const width = Math.round(_width || 0);
@@ -78,5 +81,8 @@ export function useInitProps<T>(
         snapEnabled,
         width,
         height,
+        onRefresh,
+        refreshing,
+        allowRefreshing
     };
 }

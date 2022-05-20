@@ -1,3 +1,17 @@
+# [2.4.0](https://github.com/dohooo/react-native-reanimated-carousel/compare/v2.3.11...v2.4.0) (2022-05-18)
+
+
+### Bug Fixes
+
+* index bug ([57a18ad](https://github.com/dohooo/react-native-reanimated-carousel/commit/57a18ad8f3382b737030b29a5bbc449fbcf08cb7)), closes [#185](https://github.com/dohooo/react-native-reanimated-carousel/issues/185)
+
+## [2.3.11](https://github.com/dohooo/react-native-reanimated-carousel/compare/v2.3.10...v2.3.11) (2022-05-15)
+
+
+### Bug Fixes
+
+* focused index is not persisted when carousel component is re-rendered ([d82d39b](https://github.com/dohooo/react-native-reanimated-carousel/commit/d82d39bfa1abd9060bad6756b0feccd894d22cbe)), closes [#181](https://github.com/dohooo/react-native-reanimated-carousel/issues/181)
+
 ## [2.3.10](https://github.com/dohooo/react-native-reanimated-carousel/compare/v2.3.9...v2.3.10) (2022-05-04)
 
 
