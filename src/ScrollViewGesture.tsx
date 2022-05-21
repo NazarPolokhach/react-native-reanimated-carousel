@@ -201,6 +201,17 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
         _withSpring,
     ]);
 
+    const startRefresh = React.useCallback(
+        () => {
+            'worklet';
+            console.log('-==-0 startRefresh', { onRefresh, refreshing, allowRefreshing })
+            if (onRefresh && !refreshing && allowRefreshing) {
+                runOnJS(onRefresh)()
+            }
+        },
+        [onRefresh, refreshing, allowRefreshing]
+    )
+
     useAnimatedReaction(
         () => translation.value,
         () => {
@@ -229,13 +240,8 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                     cancelAnimation(translation);
                 }
 
-                console.log('-=-= onActive', e?.translationY,refreshing, allowRefreshing)
-                
-                if (e?.translationY > 50 && !refreshing && allowRefreshing) {
-                    if(onRefresh) { 
-                        runOnJS(onRefresh)() 
-                        cancelAnimation(translation)
-                    }
+                if (e?.translationY > 50) {
+                    startRefresh()
                 }
 
                 touching.value = true;
