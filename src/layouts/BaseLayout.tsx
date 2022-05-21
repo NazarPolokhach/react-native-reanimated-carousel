@@ -54,7 +54,7 @@ export const BaseLayout: React.FC<{
         ...(typeof customConfig === 'function' ? customConfig() : {}),
     };
 
-    useEffect(() => { console.log('-=-= allowRefreshing', allowRefreshing) }, [allowRefreshing])
+    useEffect(() => { console.log('-=-= allowRefreshing 123123123', allowRefreshing) }, [allowRefreshing])
 
     if (mode === 'horizontal-stack') {
         const { snapDirection, showLength } = modeConfig as ILayoutConfig;

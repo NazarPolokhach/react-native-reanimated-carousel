@@ -66,7 +66,7 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
     } = props;
 
     useEffect(() => {
-        console.log('-=-= onRefresh', { onRefresh, refreshing, allowRefreshing })
+        console.log('-=-= onRefresh useEffect', { onRefresh, refreshing, allowRefreshing })
     }, [onRefresh, refreshing, allowRefreshing])
 
     const maxPage = data.length;
@@ -228,6 +228,8 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
                     ctx.validStart = false;
                     cancelAnimation(translation);
                 }
+
+                console.log('-=-= onActive', e?.translationY,refreshing, allowRefreshing)
                 
                 if (e?.translationY > 50 && !refreshing && allowRefreshing) {
                     if(onRefresh) { runOnJS(onRefresh)() }
