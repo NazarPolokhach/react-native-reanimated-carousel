@@ -204,8 +204,9 @@ const IScrollViewGesture: React.FC<Props> = (props) => {
     const startRefresh = React.useCallback(
         () => {
             'worklet';
-            console.log('-==-0 startRefresh', { onRefresh, refreshing, allowRefreshing })
             if (onRefresh && !refreshing && allowRefreshing) {
+                cancelAnimation(translation)
+                console.log('-==-0 startRefresh', { onRefresh, refreshing, allowRefreshing })
                 runOnJS(onRefresh)()
             }
         },
